@@ -2,8 +2,10 @@ package com.example.bookinghotel.bookinghotel.service.impl;
 
 import com.example.bookinghotel.bookinghotel.entity.Reservation;
 import com.example.bookinghotel.bookinghotel.service.ReservationService;
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
@@ -83,16 +85,17 @@ public class ReservationServiceImpl implements ReservationService {
     public void onApplicationEvent(ContextClosedEvent event) {
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info(reservations.size());
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("set", reservations);
+        JSONArray jsonObject = new JSONArray();
+        Gson gson = new Gson();
+        reservations.stream().forEach(r->jsonObject.put(new JSONObject(r)));
         log.info(jsonObject.toString());
-        File yourFile = new File("reservations.json");
+        File yourFile = new File("src/main/resources/reservations.json");
         try {
             yourFile.createNewFile();
-            FileOutputStream oFile = new FileOutputStream(yourFile, true);
+            FileOutputStream oFile = new FileOutputStream(yourFile, false);
             oFile.write(jsonObject.toString().getBytes(StandardCharsets.UTF_8));
             oFile.close();
-            log.info("File saved"+yourFile.getPath());
+            log.info("File saved: "+yourFile.getPath());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

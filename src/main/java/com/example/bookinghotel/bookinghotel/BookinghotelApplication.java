@@ -42,10 +42,8 @@ public class BookinghotelApplication {
 
 			TypeReference<List<Reservation>> typeReference = new TypeReference<List<Reservation>>() {};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/reservations.json");
-			System.out.println("over herar");
 			try {
 				List<Reservation> reservations = mapper.readValue(inputStream, typeReference);
-				System.out.println("Hearararararra");
 				reservations.stream().forEach(r ->
 						reservationService.save(r)
 				);

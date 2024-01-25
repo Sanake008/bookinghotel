@@ -11,6 +11,7 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
+@ToString
 public class Reservation {
     private Integer id;
     private String clientFullName;
