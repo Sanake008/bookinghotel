@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "clientFullName":"Abraham Macias",
+    "roomNumber": 2,
+    "reservationDates":[
+      "2024-01-22",
+      "2024-02-05"
+    ]
+  },
+  {
+    "id": 2,
+    "clientFullName":"Some Name",
+    "roomNumber": 4,
+    "reservationDates":[
+      "2024-02-15",
+      "2024-02-28"
+    ]
+  }
+]
