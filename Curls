@@ -1,0 +1,14 @@
+curl --request DELETE \
+  --url http://localhost:8080/reservation/delete \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/2023.5.8' \
+  --cookie JSESSIONID=12E69B534675372C90904F02DDC68584 \
+  --data '{
+		"id": 1,
+		"clientFullName": "Abraham Macias",
+		"roomNumber": 2,
+		"reservationDates": [
+			"2024-01-22",
+			"2024-02-05"
+		]
+}'
